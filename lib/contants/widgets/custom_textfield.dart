@@ -30,7 +30,7 @@ class CustomTextField extends StatelessWidget {
             label: CustomSubText(theText: theLabel),
             contentPadding: EdgeInsets.only(
                 bottom: 5, left: 10, right: 15, top: theTopPaddin),
-            hintText: theFirstName,
+            hintText: theNameList[0],
             focusedBorder: const OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(5))),
             enabledBorder: const OutlineInputBorder(
