@@ -206,7 +206,7 @@ class CvHomeScreen extends StatelessWidget {
   Padding appPadding({required Widget theChild}) {
     return Padding(
       padding: const EdgeInsets.only(
-        top: 70,
+        top: 50,
         left: 10,
         right: 10,
         bottom: 40,
