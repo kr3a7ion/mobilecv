@@ -106,8 +106,9 @@ class CvHomeScreen extends StatelessWidget {
                           size: 2,
                         ),
                         theText: '${languages[0]} - ${languages[1]}'),
-                    kSpacerHeight30,
-                    kSpacerHeight30
+                    const SizedBox(
+                      height: 100,
+                    )
                   ],
                 ),
               )),
