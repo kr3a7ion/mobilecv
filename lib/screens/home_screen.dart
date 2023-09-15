@@ -38,19 +38,24 @@ class CvHomeScreen extends StatelessWidget {
               color: AppColors.backgroundColorGrey,
               child: appPadding(
                   theChild: SingleChildScrollView(
-                    child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
                     const CustomCirclerImage(),
                     LargeHeaderText(
-                      theText: theNameList[theFirstName].toString().toUpperCase(),
+                      theText:
+                          theNameList[theFirstName].toString().toUpperCase(),
                     ),
                     LargeHeaderText(
-                      theText: theNameList[theLastName].toString().toUpperCase(),
+                      theText:
+                          theNameList[theLastName].toString().toUpperCase(),
                     ),
-                    CustomSubHeader(theText: theContactList[theJobTitle].toString().toUpperCase()),
+                    CustomSubHeader(
+                        theText: theContactList[theJobTitle]
+                            .toString()
+                            .toUpperCase()),
                     kSpacerHeight25,
-                  
+
                     // Contact Section
                     const CustomSubHeader(
                       theText: theHeaderContact,
@@ -62,13 +67,13 @@ class CvHomeScreen extends StatelessWidget {
                           theIcon: Icons.local_phone_rounded,
                         ),
                         theText: theContactList[thePhoneNumber]),
-                  
+
                     CustomIconTextRow(
                         theIcon: const CustomIcon(theIcon: Icons.email_rounded),
                         theText: theContactList[theEmail]),
                     CustomIconTextRow(
-                        theIcon:
-                            const CustomIcon(theIcon: Icons.location_on_rounded),
+                        theIcon: const CustomIcon(
+                            theIcon: Icons.location_on_rounded),
                         theText:
                             '${theContactList[theCountry]} ${theContactList[theRegion]} ${theContactList[thePostalCode]}'),
                     CustomIconTextRow(
@@ -78,7 +83,7 @@ class CvHomeScreen extends StatelessWidget {
                         theIcon: customImageIcon(theimage: theSlackIcon),
                         theText: theContactList[theSlackUsername]),
                     kSpacerHeight20,
-                  
+
                     // Skill Section
                     const CustomSubHeader(theText: theHeaderSkills),
                     const CustomDivider(),
@@ -90,7 +95,7 @@ class CvHomeScreen extends StatelessWidget {
                             size: 0.5,
                           ),
                           theText: thetext),
-                  
+
                     // Languages Section
                     kSpacerHeight20,
                     const CustomSubHeader(theText: theHeaderLanguage),
@@ -100,10 +105,12 @@ class CvHomeScreen extends StatelessWidget {
                           Icons.circle_rounded,
                           size: 2,
                         ),
-                        theText: '${languages[0]} - ${languages[1]}')
-                                  ],
-                                ),
-                  )),
+                        theText: '${languages[0]} - ${languages[1]}'),
+                    kSpacerHeight30,
+                    kSpacerHeight30
+                  ],
+                ),
+              )),
             ),
           ),
           Expanded(
