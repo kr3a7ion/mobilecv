@@ -37,70 +37,73 @@ class CvHomeScreen extends StatelessWidget {
             child: Container(
               color: AppColors.backgroundColorGrey,
               child: appPadding(
-                  theChild: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const CustomCirclerImage(),
-                  LargeHeaderText(
-                    theText: theNameList[0].toUpperCase(),
-                  ),
-                  LargeHeaderText(
-                    theText: theNameList[1].toUpperCase(),
-                  ),
-                  CustomSubHeader(theText: theJobTitle.toUpperCase()),
-                  kSpacerHeight25,
-
-                  // Contact Section
-                  const CustomSubHeader(
-                    theText: theHeaderContact,
-                  ),
-                  const CustomDivider(),
-                  kSpacerHeight10,
-                  CustomIconTextRow(
-                      theIcon: const CustomIcon(
-                        theIcon: Icons.local_phone_rounded,
-                      ),
-                      theText: theContactList[thePhoneNumber]),
-                  CustomIconTextRow(
-                      theIcon: const CustomIcon(theIcon: Icons.email_rounded),
-                      theText: theContactList[theEmail]),
-                  CustomIconTextRow(
-                      theIcon:
-                          const CustomIcon(theIcon: Icons.location_on_rounded),
-                      theText:
-                          '${theContactList[theCountry]} ${theContactList[theRegion]} ${theContactList[thePostalCode]}'),
-                  CustomIconTextRow(
-                      theIcon: customImageIcon(theimage: theGithubIcon),
-                      theText: theContactList[theGithubUsername]),
-                  CustomIconTextRow(
-                      theIcon: customImageIcon(theimage: theSlackIcon),
-                      theText: theContactList[theSlackUsername]),
-                  kSpacerHeight20,
-
-                  // Skill Section
-                  const CustomSubHeader(theText: theHeaderSkills),
-                  const CustomDivider(),
-                  kSpacerHeight10,
-                  for (String thetext in skillsAquired)
+                  theChild: SingleChildScrollView(
+                    child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                    const CustomCirclerImage(),
+                    LargeHeaderText(
+                      theText: theNameList[theFirstName].toString().toUpperCase(),
+                    ),
+                    LargeHeaderText(
+                      theText: theNameList[theLastName].toString().toUpperCase(),
+                    ),
+                    CustomSubHeader(theText: theContactList[theJobTitle].toString().toUpperCase()),
+                    kSpacerHeight25,
+                  
+                    // Contact Section
+                    const CustomSubHeader(
+                      theText: theHeaderContact,
+                    ),
+                    const CustomDivider(),
+                    kSpacerHeight10,
+                    CustomIconTextRow(
+                        theIcon: const CustomIcon(
+                          theIcon: Icons.local_phone_rounded,
+                        ),
+                        theText: theContactList[thePhoneNumber]),
+                  
+                    CustomIconTextRow(
+                        theIcon: const CustomIcon(theIcon: Icons.email_rounded),
+                        theText: theContactList[theEmail]),
+                    CustomIconTextRow(
+                        theIcon:
+                            const CustomIcon(theIcon: Icons.location_on_rounded),
+                        theText:
+                            '${theContactList[theCountry]} ${theContactList[theRegion]} ${theContactList[thePostalCode]}'),
+                    CustomIconTextRow(
+                        theIcon: customImageIcon(theimage: theGithubIcon),
+                        theText: theContactList[theGithubUsername]),
+                    CustomIconTextRow(
+                        theIcon: customImageIcon(theimage: theSlackIcon),
+                        theText: theContactList[theSlackUsername]),
+                    kSpacerHeight20,
+                  
+                    // Skill Section
+                    const CustomSubHeader(theText: theHeaderSkills),
+                    const CustomDivider(),
+                    kSpacerHeight10,
+                    for (String thetext in skillsAquired)
+                      CustomIconTextRow(
+                          theIcon: const Icon(
+                            Icons.circle_rounded,
+                            size: 0.5,
+                          ),
+                          theText: thetext),
+                  
+                    // Languages Section
+                    kSpacerHeight20,
+                    const CustomSubHeader(theText: theHeaderLanguage),
+                    const CustomDivider(),
                     CustomIconTextRow(
                         theIcon: const Icon(
                           Icons.circle_rounded,
-                          size: 0.5,
+                          size: 2,
                         ),
-                        theText: thetext),
-
-                  // Languages Section
-                  kSpacerHeight20,
-                  const CustomSubHeader(theText: theHeaderLanguage),
-                  const CustomDivider(),
-                  CustomIconTextRow(
-                      theIcon: const Icon(
-                        Icons.circle_rounded,
-                        size: 2,
-                      ),
-                      theText: '${languages[0]} - ${languages[1]}')
-                ],
-              )),
+                        theText: '${languages[0]} - ${languages[1]}')
+                                  ],
+                                ),
+                  )),
             ),
           ),
           Expanded(

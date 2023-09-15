@@ -1,18 +1,29 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
 import 'package:mobilecv/contants/colors/app_colors.dart';
 import 'package:mobilecv/contants/contant_value/cv_variables.dart';
 import 'package:mobilecv/contants/contant_value/spacers.dart';
+import 'package:mobilecv/contants/data/data.dart';
+import 'package:mobilecv/contants/data/save_data.dart';
 import 'package:mobilecv/contants/widgets/custom_divider.dart';
 import 'package:mobilecv/contants/widgets/custom_sub_header.dart';
 
 import 'package:mobilecv/contants/widgets/custom_textfield.dart';
 import 'package:mobilecv/screens/home_screen.dart';
 
-class EditScreen extends StatelessWidget {
+class EditScreen extends StatefulWidget {
   static const editScreen = '/editScreen';
   const EditScreen({super.key});
+
+  @override
+  State<EditScreen> createState() => _EditScreenState();
+}
+
+class _EditScreenState extends State<EditScreen> {
+  @override
+  void dispose() {
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,8 +61,14 @@ class EditScreen extends StatelessWidget {
               kSpacerHeight15,
               for (String theNames in theNameList.keys)
                 CustomTextField(
-                  theInialValue: theNameList[theNames],
                   theLabel: theNames,
+                  theController:
+                      TextEditingController(text: theNameList[theNames]),
+                  theEditorCompleted: (value) => saveData(
+                    theMap: theNameList,
+                    theKey: theNames,
+                    theValue: value,
+                  ),
                 ),
 
               // CONTACT DATA
@@ -61,8 +78,11 @@ class EditScreen extends StatelessWidget {
               kSpacerHeight10,
               for (String theKeys in theContactList.keys)
                 CustomTextField(
+                  theController:
+                      TextEditingController(text: theContactList[theKeys]),
                   theLabel: theKeys,
-                  theInialValue: theContactList[theKeys],
+                  theEditorCompleted: (value) => saveData(
+                      theMap: theContactList, theKey: theKeys, theValue: value),
                 ),
 
               // SKILLS DATA
@@ -72,9 +92,13 @@ class EditScreen extends StatelessWidget {
               kSpacerHeight10,
               for (String theValue in skillsAquired)
                 CustomTextField(
-                  theLabel: '',
-                  theInialValue: theValue,
-                ),
+                    theLabel: '',
+                    theController: TextEditingController(text: theValue),
+                    theEditorCompleted: (value) => saveListData(
+                          theList: skillsAquired,
+                          theIndex: skillsAquired.indexOf(theValue),
+                          theValue: value,
+                        )),
 
               // LANGUAGES DATA
               kSpacerHeight20,
@@ -85,7 +109,12 @@ class EditScreen extends StatelessWidget {
                 CustomTextField(
                   theLabel:
                       languages.indexOf(theValue) == 1 ? 'Level' : 'Speaks',
-                  theInialValue: theValue,
+                  theController: TextEditingController(text: theValue),
+                  theEditorCompleted: (value) => saveListData(
+                    theList: languages,
+                    theIndex: languages.indexOf(theValue),
+                    theValue: value,
+                  ),
                 ),
 
               // CAREER OBJECTIVES
@@ -94,11 +123,17 @@ class EditScreen extends StatelessWidget {
               const CustomDivider(theColor: AppColors.backgroundColorGrey),
               kSpacerHeight10,
               CustomTextField(
-                  theMaxline: 10,
-                  theTopPaddin: 10,
-                  theInputType: TextInputType.multiline,
-                  theLabel: '',
-                  theInialValue: theCareerObjective),
+                theMaxline: 10,
+                theTopPadding: 10,
+                theInputType: TextInputType.multiline,
+                theLabel: '',
+                theController: TextEditingController(text: theCareerObjective),
+                theEditorCompleted: (value) => saveVarData(
+                  theVairable: theCareerObjective,
+                  theNewValue: value,
+                ),
+              ),
+
               kSpacerHeight10,
 
               // WORK EXPERIENCE
@@ -108,20 +143,33 @@ class EditScreen extends StatelessWidget {
               kSpacerHeight10,
               for (String theExp in theExperience)
                 CustomTextField(
-                    theMaxline: 3,
-                    theTopPaddin: 10,
-                    theInputType: TextInputType.multiline,
-                    theLabel: '',
-                    theInialValue: theExp),
+                  theMaxline: 3,
+                  theTopPadding: 10,
+                  theInputType: TextInputType.multiline,
+                  theLabel: '',
+                  theController: TextEditingController(text: theExp),
+                  theEditorCompleted: (value) => saveListData(
+                    theList: theExperience,
+                    theIndex: theExperience.indexOf(theExp),
+                    theValue: value,
+                  ),
+                ),
+
               kSpacerHeight10,
 
               // EXPERINCE DATE
               for (String theExp in theExperienceDate)
                 CustomTextField(
-                    theLabel: theExperienceDate.indexOf(theExp) == 1
-                        ? 'Time of Completion'
-                        : 'Period',
-                    theInialValue: theExp),
+                  theLabel: theExperienceDate.indexOf(theExp) == 1
+                      ? 'Time of Completion'
+                      : 'Period',
+                  theController: TextEditingController(text: theExp),
+                  theEditorCompleted: (value) => saveListData(
+                    theList: theExperienceDate,
+                    theIndex: theExperienceDate.indexOf(theExp),
+                    theValue: value,
+                  ),
+                ),
 
               // EDUCATION DATA
               kSpacerHeight20,
@@ -130,18 +178,27 @@ class EditScreen extends StatelessWidget {
               kSpacerHeight10,
               for (String theKeys in theEducational.keys)
                 CustomTextField(
-                  theLabel: theKeys,
-                  theInialValue: theEducational[theKeys],
-                ),
+                    theLabel: theKeys,
+                    theController:
+                        TextEditingController(text: theEducational[theKeys]),
+                    theEditorCompleted: (value) => saveData(
+                        theMap: theEducational,
+                        theKey: theKeys,
+                        theValue: value)),
 
               //
               const CustomDivider(theColor: AppColors.backgroundColorGrey),
               kSpacerHeight10,
               for (String theKeys in theEducationalCollege.keys)
                 CustomTextField(
-                  theLabel: theKeys,
-                  theInialValue: theEducationalCollege[theKeys],
-                ),
+                    theLabel: theKeys,
+                    theController: TextEditingController(
+                        text: theEducationalCollege[theKeys]),
+                    theEditorCompleted: (value) => saveData(
+                          theMap: theEducationalCollege,
+                          theKey: theKeys,
+                          theValue: value,
+                        )),
               kSpacerHeight10,
 
               // CERTIFICATIONS DATA
@@ -152,7 +209,12 @@ class EditScreen extends StatelessWidget {
               for (String theKeys in theCertifications)
                 CustomTextField(
                   theLabel: '',
-                  theInialValue: theKeys,
+                  theController: TextEditingController(text: theKeys),
+                  theEditorCompleted: (value) => saveListData(
+                    theList: theExperienceDate,
+                    theIndex: theCertifications.indexOf(theKeys),
+                    theValue: value,
+                  ),
                 ),
               kSpacerHeight10,
 
@@ -164,7 +226,12 @@ class EditScreen extends StatelessWidget {
               for (String theKeys in theReferences)
                 CustomTextField(
                   theLabel: '',
-                  theInialValue: theKeys,
+                  theController: TextEditingController(text: theKeys),
+                  theEditorCompleted: (value) => saveListData(
+                    theList: theReferences,
+                    theIndex: theReferences.indexOf(theKeys),
+                    theValue: value,
+                  ),
                 ),
               kSpacerHeight20,
               Row(

@@ -1,16 +1,11 @@
 # mobilecv
 
-A new Flutter project.
+This is a project that shows a comprehensive CV, showcasing personal and professional details. This application enable both viewing and editing of the provided CV information.
 
-## Getting Started
+## The application should display:
+Personal Information: 
+Your full name: Okanlawon Gideon
+Slack username: @kr3a7ion
+GitHub handle: @kr3a7ion
+A brief personal bio
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.

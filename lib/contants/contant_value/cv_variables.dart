@@ -5,12 +5,17 @@ String cvProfileImage = 'assets/images/image.png';
 String theGithubIcon = 'assets/images/github.png';
 String theSlackIcon = 'assets/images/slack.png';
 
+// Name list keys
+String theFirstName = 'First Name';
+String theLastName = 'Last Name';
+
 Map theNameList = <String, String>{
   'First Name': 'GIDEON',
   'Last Name': 'OKANLAWON',
 };
 
-String theJobTitle = 'Flutter Developer';
+// Contact List Map Keys
+String theJobTitle = 'Job Title';
 String thePhoneNumber = 'Phone Number';
 String theEmail = 'Email';
 String theCountry = 'Country,';
